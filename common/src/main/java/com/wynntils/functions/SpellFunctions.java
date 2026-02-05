@@ -1,5 +1,5 @@
 /*
- * Copyright © Wynntils 2023-2025.
+ * Copyright © Wynntils 2023-2026.
  * This file is released under LGPLv3. See LICENSE for full license details.
  */
 package com.wynntils.functions;
@@ -8,6 +8,7 @@ import com.wynntils.core.components.Models;
 import com.wynntils.core.consumers.functions.Function;
 import com.wynntils.core.consumers.functions.arguments.Argument;
 import com.wynntils.core.consumers.functions.arguments.FunctionArguments;
+import com.wynntils.models.abilities.type.ArcherHound;
 import com.wynntils.models.abilities.type.ShamanTotem;
 import com.wynntils.models.abilities.type.ShieldType;
 import com.wynntils.models.character.type.ClassType;
@@ -181,6 +182,32 @@ public class SpellFunctions {
         public FunctionArguments.Builder getArgumentsBuilder() {
             return new FunctionArguments.RequiredArgumentBuilder(
                     List.of(new Argument<>("totemNumber", Integer.class, null)));
+        }
+    }
+
+    public static class ArcherHoundTimeLeftFunction extends Function<Integer> {
+        @Override
+        public Integer getValue(FunctionArguments arguments) {
+            ArcherHound archerHound = Models.ArcherHound.getHound();
+
+            if (archerHound == null) {
+                return 0;
+            }
+
+            return archerHound.getTime();
+        }
+    }
+
+    public static class ArcherHoundDistanceFunction extends Function<Double> {
+        @Override
+        public Double getValue(FunctionArguments arguments) {
+            ArcherHound archerHound = Models.ArcherHound.getHound();
+
+            if (archerHound == null) {
+                return 0d;
+            }
+
+            return McUtils.player().position().distanceTo(PosUtils.toVec3(archerHound.getPosition()));
         }
     }
 }

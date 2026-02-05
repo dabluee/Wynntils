@@ -693,6 +693,8 @@ public final class FunctionManager extends Manager {
         registerFunction(new SpellFunctions.ShamanTotemStateFunction());
         registerFunction(new SpellFunctions.ShamanTotemTimeLeftFunction());
         registerFunction(new SpellFunctions.ShieldTypeNameFunction());
+        registerFunction(new SpellFunctions.ArcherHoundDistanceFunction());
+        registerFunction(new SpellFunctions.ArcherHoundTimeLeftFunction());
 
         registerFunction(new StatisticFunctions.StatisticsAverageFunction());
         registerFunction(new StatisticFunctions.StatisticsCountFunction());

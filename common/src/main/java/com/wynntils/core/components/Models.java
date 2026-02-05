@@ -1,10 +1,11 @@
 /*
- * Copyright © Wynntils 2022-2025.
+ * Copyright © Wynntils 2022-2026.
  * This file is released under LGPLv3. See LICENSE for full license details.
  */
 package com.wynntils.core.components;
 
 import com.wynntils.models.abilities.AbilityModel;
+import com.wynntils.models.abilities.ArcherHoundModel;
 import com.wynntils.models.abilities.ShamanMaskModel;
 import com.wynntils.models.abilities.ShamanTotemModel;
 import com.wynntils.models.abilities.ShieldModel;
@@ -118,6 +119,7 @@ public final class Models {
     public static final SetModel Set = new SetModel();
     public static final ShamanMaskModel ShamanMask = new ShamanMaskModel();
     public static final ShamanTotemModel ShamanTotem = new ShamanTotemModel();
+    public static final ArcherHoundModel ArcherHound = new ArcherHoundModel();
     public static final ShieldModel Shield = new ShieldModel();
     public static final ShinyModel Shiny = new ShinyModel();
     public static final SkillPointModel SkillPoint = new SkillPointModel();
