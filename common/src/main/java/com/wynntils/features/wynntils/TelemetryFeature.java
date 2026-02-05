@@ -1,5 +1,5 @@
 /*
- * Copyright © Wynntils 2023-2025.
+ * Copyright © Wynntils 2023-2026.
  * This file is released under LGPLv3. See LICENSE for full license details.
  */
 package com.wynntils.features.wynntils;
@@ -15,7 +15,6 @@ import com.wynntils.core.persisted.Persisted;
 import com.wynntils.core.persisted.config.Category;
 import com.wynntils.core.persisted.config.Config;
 import com.wynntils.core.persisted.config.ConfigCategory;
-import com.wynntils.core.persisted.config.ConfigProfile;
 import com.wynntils.models.worlds.event.WorldStateEvent;
 import com.wynntils.models.worlds.type.WorldState;
 import com.wynntils.utils.JsonUtils;
@@ -36,10 +35,7 @@ public class TelemetryFeature extends Feature {
     private final Config<ConfirmedBoolean> crashReports = new Config<>(ConfirmedBoolean.UNCONFIRMED);
 
     public TelemetryFeature() {
-        super(new ProfileDefault.Builder()
-                .disableFor(
-                        ConfigProfile.NEW_PLAYER, ConfigProfile.LITE, ConfigProfile.MINIMAL, ConfigProfile.BLANK_SLATE)
-                .build());
+        super(ProfileDefault.onlyDefault());
     }
 
     @SubscribeEvent
@@ -72,27 +68,25 @@ public class TelemetryFeature extends Feature {
         if (crashReports.get() != ConfirmedBoolean.UNCONFIRMED) return;
 
         MutableComponent component = Component.literal("Wynntils Telemetry\n").withStyle(ChatFormatting.AQUA);
-        component.append(Component.literal(
-                        """
+        component.append(Component.literal("""
                         Wynntils can send telemetry data when a component fails.
                         This data does not contain any personal information,
                         but is helpful for developers for fixing bugs in Wynntils.
-                        """)
-                .withStyle(ChatFormatting.GRAY));
+                        """).withStyle(ChatFormatting.GRAY));
 
         component.append(Component.literal("Click here")
                 .withStyle(ChatFormatting.GREEN)
                 .withStyle(ChatFormatting.UNDERLINE)
-                .withStyle(style -> style.withClickEvent(new ClickEvent(
-                        ClickEvent.Action.RUN_COMMAND, "/wynntils config set Telemetry crashReports true"))));
+                .withStyle(style -> style.withClickEvent(
+                        new ClickEvent.RunCommand("/wynntils config set Telemetry crashReports true"))));
         component.append(
                 Component.literal(" to accept crash report telemetry\n").withStyle(ChatFormatting.GREEN));
 
         component.append(Component.literal("Click here")
                 .withStyle(ChatFormatting.RED)
                 .withStyle(ChatFormatting.UNDERLINE)
-                .withStyle(style -> style.withClickEvent(new ClickEvent(
-                        ClickEvent.Action.RUN_COMMAND, "/wynntils config set Telemetry crashReports false"))));
+                .withStyle(style -> style.withClickEvent(
+                        new ClickEvent.RunCommand("/wynntils config set Telemetry crashReports false"))));
         component.append(
                 Component.literal(" to opt out of crash report telemetry\n").withStyle(ChatFormatting.RED));
 
