@@ -39,7 +39,7 @@ public final class ArcherHoundModel extends Model {
             Pattern.compile("§b(?<username>.+)'(?:s)?§7 Hound\n(?<time>\\d+)s");
     private static final double HOUND_SEARCH_RADIUS = 1;
     private static final int HOUND_DATA_DELAY_TICKS = 2;
-    private static final int CAST_MAX_DELAY_MS = 1200;
+    private static final int CAST_MAX_DELAY_MS = 1400;
     // TODO: CAST_MAX_DELAY could be a config when model configs eventually exist
     // it kind of depends on ping and server lag, may not detect a hound was spawned at all
 
