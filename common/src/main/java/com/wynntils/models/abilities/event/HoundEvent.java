@@ -6,7 +6,7 @@ package com.wynntils.models.abilities.event;
 
 import com.wynntils.models.abilities.type.ArcherHound;
 import net.minecraft.core.Position;
-import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.neoforged.bus.api.Event;
 
 public abstract class HoundEvent extends Event {

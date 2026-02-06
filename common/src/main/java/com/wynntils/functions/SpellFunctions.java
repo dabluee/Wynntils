@@ -210,5 +210,4 @@ public class SpellFunctions {
                     List.of(new Argument<>("totemNumber", Integer.class, null)));
         }
     }
-
 }
