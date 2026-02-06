@@ -76,6 +76,7 @@ public final class Models {
     public static final AbilityModel Ability = new AbilityModel();
     public static final AbilityTreeModel AbilityTree = new AbilityTreeModel();
     public static final AccountModel Account = new AccountModel();
+    public static final ArcherHoundModel ArcherHound = new ArcherHoundModel();
     public static final AspectModel Aspect = new AspectModel();
     public static final BankModel Bank = new BankModel();
     public static final BeaconModel Beacon = new BeaconModel();
@@ -120,7 +121,6 @@ public final class Models {
     public static final SetModel Set = new SetModel();
     public static final ShamanMaskModel ShamanMask = new ShamanMaskModel();
     public static final ShamanTotemModel ShamanTotem = new ShamanTotemModel();
-    public static final ArcherHoundModel ArcherHound = new ArcherHoundModel();
     public static final ShieldModel Shield = new ShieldModel();
     public static final ShinyModel Shiny = new ShinyModel();
     public static final SkillPointModel SkillPoint = new SkillPointModel();

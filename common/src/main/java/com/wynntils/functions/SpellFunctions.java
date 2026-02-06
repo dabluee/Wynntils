@@ -20,6 +20,32 @@ import java.util.Locale;
 import net.minecraft.ChatFormatting;
 
 public class SpellFunctions {
+    public static class ArcherHoundTimeLeftFunction extends Function<Integer> {
+        @Override
+        public Integer getValue(FunctionArguments arguments) {
+            ArcherHound archerHound = Models.ArcherHound.getHound();
+
+            if (archerHound == null) {
+                return 0;
+            }
+
+            return archerHound.getTime();
+        }
+    }
+
+    public static class ArcherHoundDistanceFunction extends Function<Double> {
+        @Override
+        public Double getValue(FunctionArguments arguments) {
+            ArcherHound archerHound = Models.ArcherHound.getHound();
+
+            if (archerHound == null) {
+                return 0d;
+            }
+
+            return McUtils.player().position().distanceTo(PosUtils.toVec3(archerHound.getPosition()));
+        }
+    }
+
     public static class ArrowShieldCountFunction extends Function<Integer> {
         @Override
         public Integer getValue(FunctionArguments arguments) {
@@ -185,29 +211,4 @@ public class SpellFunctions {
         }
     }
 
-    public static class ArcherHoundTimeLeftFunction extends Function<Integer> {
-        @Override
-        public Integer getValue(FunctionArguments arguments) {
-            ArcherHound archerHound = Models.ArcherHound.getHound();
-
-            if (archerHound == null) {
-                return 0;
-            }
-
-            return archerHound.getTime();
-        }
-    }
-
-    public static class ArcherHoundDistanceFunction extends Function<Double> {
-        @Override
-        public Double getValue(FunctionArguments arguments) {
-            ArcherHound archerHound = Models.ArcherHound.getHound();
-
-            if (archerHound == null) {
-                return 0d;
-            }
-
-            return McUtils.player().position().distanceTo(PosUtils.toVec3(archerHound.getPosition()));
-        }
-    }
 }

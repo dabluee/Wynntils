@@ -686,6 +686,8 @@ public final class FunctionManager extends Manager {
         registerFunction(new SocialFunctions.PlayerNameFunction());
         registerFunction(new SocialFunctions.WynntilsRoleFunction());
 
+        registerFunction(new SpellFunctions.ArcherHoundDistanceFunction());
+        registerFunction(new SpellFunctions.ArcherHoundTimeLeftFunction());
         registerFunction(new SpellFunctions.ArrowShieldCountFunction());
         registerFunction(new SpellFunctions.GuardianAngelsCountFunction());
         registerFunction(new SpellFunctions.MantleShieldCountFunction());
@@ -695,8 +697,6 @@ public final class FunctionManager extends Manager {
         registerFunction(new SpellFunctions.ShamanTotemStateFunction());
         registerFunction(new SpellFunctions.ShamanTotemTimeLeftFunction());
         registerFunction(new SpellFunctions.ShieldTypeNameFunction());
-        registerFunction(new SpellFunctions.ArcherHoundDistanceFunction());
-        registerFunction(new SpellFunctions.ArcherHoundTimeLeftFunction());
 
         registerFunction(new StatisticFunctions.StatisticsAverageFunction());
         registerFunction(new StatisticFunctions.StatisticsCountFunction());
