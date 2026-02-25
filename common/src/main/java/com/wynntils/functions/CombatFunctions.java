@@ -1,5 +1,5 @@
 /*
- * Copyright © Wynntils 2023-2025.
+ * Copyright © Wynntils 2023-2026.
  * This file is released under LGPLv3. See LICENSE for full license details.
  */
 package com.wynntils.functions;
@@ -149,6 +149,25 @@ public class CombatFunctions {
         @Override
         protected List<String> getAliases() {
             return List.of("recast_ticks");
+        }
+    }
+
+    public static class TicksSinceLastSpecificSpellFunction extends Function<Integer> {
+        @Override
+        public Integer getValue(FunctionArguments arguments) {
+            return Models.Spell.getTicksSinceSpecificCast(
+                    arguments.getArgument("spell_number").getIntegerValue());
+        }
+
+        @Override
+        public FunctionArguments.Builder getArgumentsBuilder() {
+            return new FunctionArguments.OptionalArgumentBuilder(
+                    List.of(new Argument<>("spell_number", Integer.class, 1)));
+        }
+
+        @Override
+        protected List<String> getAliases() {
+            return List.of("specific_recast_ticks");
         }
     }
 

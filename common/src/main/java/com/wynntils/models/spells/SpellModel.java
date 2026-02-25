@@ -1,5 +1,5 @@
 /*
- * Copyright © Wynntils 2023-2025.
+ * Copyright © Wynntils 2023-2026.
  * This file is released under LGPLv3. See LICENSE for full license details.
  */
 package com.wynntils.models.spells;
@@ -40,6 +40,7 @@ public final class SpellModel extends Model {
     private boolean hideSpellInputs = false;
 
     private SpellDirection[] lastSpell = SpellDirection.NO_SPELL;
+    private int[] ticksSinceAllCast = new int[4];
     private String lastBurstSpellName = "";
     private String lastSpellName = "";
     private int repeatedBurstSpellCount = 0;
@@ -100,6 +101,7 @@ public final class SpellModel extends Model {
     public void onSpellCast(SpellEvent.Cast e) {
         ticksSinceCastBurst = 0;
         ticksSinceCast = 0;
+        ticksSinceAllCast[e.getSpellType().getSpellNumber() - 1] = 0;
 
         if (e.getSpellType().getName().equals(lastBurstSpellName)) {
             repeatedBurstSpellCount++;
@@ -124,6 +126,9 @@ public final class SpellModel extends Model {
         if (!lastSpellName.isEmpty()) {
             ticksSinceCast++;
         }
+        for (int i = 0; i < 4; i++) {
+            ticksSinceAllCast[i]++;
+        }
 
         if (ticksSinceCastBurst >= SPELL_COST_RESET_TICKS) {
             lastBurstSpellName = "";
@@ -142,6 +147,7 @@ public final class SpellModel extends Model {
         repeatedSpellCount = 0;
         ticksSinceCastBurst = 0;
         ticksSinceCast = 0;
+        ticksSinceAllCast = new int[4];
     }
 
     @SubscribeEvent
@@ -204,6 +210,10 @@ public final class SpellModel extends Model {
 
     public int getTicksSinceCast() {
         return ticksSinceCast;
+    }
+
+    public int getTicksSinceSpecificCast(int spellNum) {
+        return ticksSinceAllCast[spellNum - 1];
     }
 
     private void updateFromSpellSegment(SpellSegment spellSegment) {
